@@ -1,5 +1,6 @@
 {
   "name": "student-career-guidence",
+  "homepage": "https://career-s.netlify.app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
