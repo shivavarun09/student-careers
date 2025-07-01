@@ -22,6 +22,7 @@ import Footer from './Componets/Footer/Footer'
 import UserChatBot from './Componets/UserComponets/UserChatBot/UserChatBot'
 import {toast,ToastContainer,Bounce} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from './Componets/NotFound/NotFound'
 
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { auth } from './Auth/FirebaseConfig/FirebaseConfig'
@@ -41,6 +42,8 @@ const App = () => {
       {/* <LoginComp/> */}
       {/* <ForgetPassword/> */}
       <Routes>
+                <Route path='/*' element={<NotFound/>}/>
+
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<LoginComp/>}/>
         <Route path='/signup' element={<SignupComp/>} />
