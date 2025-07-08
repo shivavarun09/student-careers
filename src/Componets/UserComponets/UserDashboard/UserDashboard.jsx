@@ -70,11 +70,11 @@ const UserDashboard = () => {
       </div>
 
       {/* Content Area */}
-      <div className="w-full h-full overflow-y-auto bg-gray-100 rounded-md md:w-3/4 scroll-smooth">
+      <div className="w-full h-screen overflow-y-auto bg-gray-100 rounded-md md:h-full md:w-3/4 scroll-smooth">
         {showGemini ? <UserChatBot /> : <UserMainContent viewCategoryUser={viewCategoryUser} />}
       </div>
     </div>
   );
 };
 
-export default React.memo(UserDashboard);
+export default UserDashboard;
