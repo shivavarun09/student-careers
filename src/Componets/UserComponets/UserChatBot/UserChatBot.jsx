@@ -59,7 +59,7 @@ const UserChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen p-3 shadow-lg ">
+    <div className="flex flex-col w-full p-3 shadow-lg min-h-svh ">
       {/* Chat Container */}
       <div
         ref={chatContainerRef}

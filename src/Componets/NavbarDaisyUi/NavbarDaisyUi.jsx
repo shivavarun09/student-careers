@@ -1,51 +1,115 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../Auth/FirebaseConfig/FirebaseConfig";
+import UserChatBot from "../UserChatBot/UserChatBot";
+import UserMainContent from "../UserMainContent/UserMainContent";
 
-const NavbarDaisyUi = () => {
+const UserDashboard = () => {
+  const [viewCategoryUser, setViewCategoryUser] = useState("jobs");
+  const [showGemini, setShowGemini] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserName(user ? user.displayName || "" : "");
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleUserViewCategory = (category) => {
+    setViewCategoryUser(category);
+    setShowGemini(false);
+  };
+
+  const handleGeminiAiModal = () => setShowGemini(true);
+  const handleClose = () => setShowGemini(false);
+
   return (
-    <div>
-      <div className="drawer">
-  <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content flex flex-col">
-    {/* Navbar */}
-    <div className="navbar bg-base-300 w-full">
-      <div className="flex-none lg:hidden">
-        <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block h-6 w-6 stroke-current">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </label>
+    <div className="drawer lg:drawer-open">
+      <input id="user-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="flex flex-col drawer-content">
+        {/* Navbar */}
+        <div className="w-full shadow-md navbar bg-base-300">
+          <div className="flex-none lg:hidden">
+            <label
+              htmlFor="user-drawer"
+              className="btn btn-square btn-ghost"
+              aria-label="open sidebar"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+          </div>
+          <div className="flex-1 px-2 text-xl font-bold">
+            Welcome, {userName || "User"}
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="p-4 overflow-y-auto h-[calc(100vh-4rem)] bg-gray-100 rounded-md">
+          {showGemini ? (
+            <UserChatBot onClose={handleClose} />
+          ) : (
+            <UserMainContent viewCategoryUser={viewCategoryUser} />
+          )}
+        </div>
       </div>
-      <div className="mx-2 flex-1 px-2">Navbar Title</div>
-      <div className="hidden flex-none lg:block">
-        <ul className="menu menu-horizontal">
-          {/* Navbar menu content here */}
-          <li><a>Navbar Item 1</a></li>
-          <li><a>Navbar Item 2</a></li>
+
+      {/* Sidebar */}
+      <div className="drawer-side">
+        <label htmlFor="user-drawer" className="drawer-overlay" aria-label="close sidebar"></label>
+        <ul className="min-h-full gap-2 p-4 menu w-80 bg-base-200 text-base-content">
+          <li className="mb-2 text-lg font-semibold">
+            Hello, {userName || "User"}
+          </li>
+          <li>
+            <button
+              className="w-full btn btn-outline btn-success"
+              onClick={() => handleUserViewCategory("jobs")}
+            >
+              Jobs
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full btn btn-outline btn-success"
+              onClick={() => handleUserViewCategory("internships")}
+            >
+              Internships
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full btn btn-outline btn-success"
+              onClick={() => handleUserViewCategory("skillCourses")}
+            >
+              Skill Courses
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full btn btn-outline btn-info"
+              onClick={handleGeminiAiModal}
+            >
+              Ask Gemini AI
+            </button>
+          </li>
         </ul>
       </div>
     </div>
-    {/* Page content here */}
-    Content
-  </div>
-  <div className="drawer-side">
-    <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-base-200 min-h-full w-80 p-4">
-      {/* Sidebar content here */}
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
-  </div>
-</div>
-    </div>
-  )
-}
+  );
+};
 
-export default NavbarDaisyUi
+export default UserDashboard;

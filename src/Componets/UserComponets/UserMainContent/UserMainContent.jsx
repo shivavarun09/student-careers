@@ -59,7 +59,7 @@ const UserViewCourses = ({viewCategoryUser}) => {
         </>
       ) : courses.length === 0 ? (
         <div className="col-span-3 mt-4 text-lg font-medium text-center text-gray-500">
-          {`🚫 No ${viewCategoryUser}s available at the moment.`}
+          {`🚫 No ${viewCategoryUser} available at the moment.`}
         </div>
       ) : (
         courses.map((singleCourse, index) => (
