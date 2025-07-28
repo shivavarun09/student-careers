@@ -18,9 +18,6 @@ import {toast,ToastContainer,Bounce} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from './Componets/NotFound/NotFound'
 
-// import { onAuthStateChanged } from 'firebase/auth'
-// import { auth } from './Auth/FirebaseConfig/FirebaseConfig'
-// import { auth } from './Auth/FirebaseConfig/FirebaseConfig'
 
 const App = () => {
 
