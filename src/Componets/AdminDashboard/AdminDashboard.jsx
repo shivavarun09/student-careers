@@ -31,16 +31,16 @@ const AdminDashboard = () => {
         <div className="block md:hidden">
           <div className="flex flex-wrap justify-center w-full gap-2 btn-group">
             <button className="btn btn-outline btn-success" onClick={handlePostClick}>
-              Post
+            Post
             </button>
             <button className="btn btn-outline btn-success" onClick={() => handleViewCategory("jobs")}>
-              Jobs
+            Jobs
             </button>
             <button className="btn btn-outline btn-success" onClick={() => handleViewCategory("internships")}>
-              Internships
+            Internships
             </button>
             <button className="btn btn-outline btn-success" onClick={() => handleViewCategory("skillCourses")}>
-              Skill Courses
+            SkillCourses
             </button>
           </div>
         </div>

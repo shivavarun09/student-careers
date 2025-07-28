@@ -69,16 +69,6 @@ theme: "light",
 transition: Bounce,
 });
 
-    // setNotificationDetails({
-    //   notificationCategory: "",
-    //   notificationType: '',
-    //   notificationTitle: '',
-    //   notificationDescription: '',
-    //   notificationPublishDate: '',
-    //   notificationDeadlineDate: "",
-    //   notificationCompany: "",
-    //   notificationLink: "",
-    // });
   } catch (error) {
     console.error(error);
     toast.error(`Error: ${error.code}`,{
