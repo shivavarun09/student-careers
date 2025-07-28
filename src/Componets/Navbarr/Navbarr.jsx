@@ -19,7 +19,6 @@ const NavbarDaisyUi = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("Triggering success toast"); // Debug
       toast.success("Logout Successful", {
         position: "top-right",
         autoClose: 2500,
@@ -100,12 +99,12 @@ const NavbarDaisyUi = () => {
                   <Link to="/contactus" className="no-underline">Contact Us</Link>
                 </li>
                 {user ? (
-                  <li>
+                  <li className="bg-blue-600">
                     <button onClick={() => setShowLogoutModal(true)}>Logout</button>
                   </li>
                 ) : (
-                  <li>
-                    <Link to="/login" className="no-underline">
+                  <li >
+                    <Link to="/login" className="no-underlin" >
                       Login
                     </Link>
                   </li>

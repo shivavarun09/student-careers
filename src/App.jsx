@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div>
       {/* <DaisyUiAlert/> */}
-      <Navbarr data-theme="cupcake"/>
+      <Navbarr/>
 {/* <UserChatBot/> */}
       {/* <NavbarDaisyUi/> */}
       {/* <AdminPostNotification/> */}
