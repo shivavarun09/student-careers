@@ -99,12 +99,12 @@ const NavbarDaisyUi = () => {
                   <Link to="/contactus" className="no-underline">Contact Us</Link>
                 </li>
                 {user ? (
-                  <li className="bg-blue-600">
-                    <button onClick={() => setShowLogoutModal(true)}>Logout</button>
+                  <li >
+                    <button onClick={() => setShowLogoutModal(true)} className="no-underline to-blue-700">Logout</button>
                   </li>
                 ) : (
-                  <li >
-                    <Link to="/login" className="no-underlin" >
+                  <li>
+                    <Link to="/login" className="no-underline to-blue-700" >
                       Login
                     </Link>
                   </li>
@@ -133,12 +133,12 @@ const NavbarDaisyUi = () => {
               <Link to="/contactus" className="no-underline">Contact Us</Link>
             </li>
             {user ? (
-              <li>
-                <button onClick={() => setShowLogoutModal(true)}>Logout</button>
+              <li >
+                <button onClick={() => setShowLogoutModal(true)} className="no-underlin to-blue-700">Logout</button>
               </li>
             ) : (
               <li>
-                <Link to="/login" className="no-underline">Login</Link>
+                <Link to="/login" className="no-underline to-blue-700">Login</Link>
               </li>
             )}
           </ul>
